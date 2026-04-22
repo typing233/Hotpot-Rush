@@ -339,12 +339,12 @@ body {
 /* 订单区域样式 */
 .order-container {
     position: absolute;
-    top: 50%;
-    left: 100px;
-    transform: translateY(-50%);
+    top: 115px;
+    left: 50%;
+    transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.95);
-    padding: 15px 20px;
-    border-radius: 20px;
+    padding: 8px 15px;
+    border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     z-index: 100;
 }
@@ -352,24 +352,26 @@ body {
 .order-container h3 {
     text-align: center;
     color: #ff6348;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    font-size: 1rem;
 }
 
 .order-items {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
     justify-content: center;
 }
 
 .order-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    padding: 10px;
+    padding: 6px 10px;
     border-radius: 10px;
     background: #f8f9fa;
-    min-width: 70px;
+    gap: 5px;
 }
 
 .order-item.completed {
@@ -379,16 +381,16 @@ body {
 
 @keyframes pulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.05); }
 }
 
 .order-item-icon {
-    font-size: 2rem;
-    margin-bottom: 5px;
+    font-size: 1.5rem;
 }
 
 .order-item-count {
     font-weight: bold;
+    font-size: 0.9rem;
     color: #333;
 }
 
