@@ -25,18 +25,19 @@ const Game = {
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
         const cornerSize = CONFIG.CONVEYOR.CORNER_SIZE;
+        const topOffset = CONFIG.CONVEYOR.TOP_OFFSET;
         
         return [
             {
                 startX: cornerSize,
-                startY: cornerSize / 2,
+                startY: topOffset + cornerSize / 2,
                 endX: screenWidth - cornerSize,
-                endY: cornerSize / 2,
+                endY: topOffset + cornerSize / 2,
                 direction: 'right'
             },
             {
                 startX: screenWidth - cornerSize / 2,
-                startY: cornerSize,
+                startY: topOffset + cornerSize,
                 endX: screenWidth - cornerSize / 2,
                 endY: screenHeight - cornerSize,
                 direction: 'down'
@@ -52,7 +53,7 @@ const Game = {
                 startX: cornerSize / 2,
                 startY: screenHeight - cornerSize,
                 endX: cornerSize / 2,
-                endY: cornerSize,
+                endY: topOffset + cornerSize,
                 direction: 'up'
             }
         ];
