@@ -29,6 +29,10 @@ function showScreen(screenId) {
         screen.classList.remove('active');
     });
     
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.classList.add('hidden');
+    });
+    
     const targetScreen = document.getElementById(screenId);
     if (targetScreen) {
         targetScreen.classList.add('active');

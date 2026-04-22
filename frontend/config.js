@@ -4,7 +4,8 @@ const CONFIG = {
     CONVEYOR: {
         CORNER_SIZE: 80,
         ITEM_SIZE: 60,
-        BASE_SPEED: 1.5
+        BASE_SPEED: 1.5,
+        TOP_OFFSET: 200
     },
     
     GAME: {

@@ -1,8 +1,11 @@
 {
   "player": {
-    "coins": 100,
-    "completed_levels": [],
-    "total_score": 0
+    "coins": 30,
+    "completed_levels": [
+      1,
+      2
+    ],
+    "total_score": 130
   },
   "shop": {
     "tables": [
@@ -16,7 +19,7 @@
         "id": 2,
         "name": "红木餐桌",
         "price": 200,
-        "unlocked": false
+        "unlocked": true
       },
       {
         "id": 3,
@@ -85,7 +88,19 @@
     ]
   },
   "collection": {
-    "dishes": []
+    "dishes": [
+      "shrimp_slide",
+      "meat_slice",
+      "vegetable",
+      "mushroom",
+      "tofu",
+      "fish_ball",
+      "noodles",
+      "egg",
+      "clam",
+      "shrimp",
+      "beef_ball"
+    ]
   },
   "selected": {
     "table": 1,
