@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>火锅冲冲冲 - Hotpot Rush</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 主菜单界面 -->
+        <div id="main-menu" class="screen active">
+            <div class="menu-container">
+                <h1 class="game-title">🍲 火锅冲冲冲</h1>
+                <p class="game-subtitle">考验你的眼手协调！</p>
+                
+                <div class="player-info">
+                    <span class="coins-display">💰 <span id="menu-coins">0</span></span>
+                </div>
+                
+                <div class="menu-buttons">
+                    <button class="menu-btn primary" onclick="showScreen('level-select')">
+                        🎮 开始游戏
+                    </button>
+                    <button class="menu-btn secondary" onclick="showScreen('shop')">
+                        🏪 商店装修
+                    </button>
+                    <button class="menu-btn secondary" onclick="showScreen('collection')">
+                        📚 菜品图鉴
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关卡选择界面 -->
+        <div id="level-select" class="screen">
+            <div class="level-container">
+                <h2>🎯 选择关卡</h2>
+                <button class="back-btn" onclick="showScreen('main-menu')">← 返回</button>
+                
+                <div id="levels-grid" class="levels-grid">
+                    <!-- 关卡按钮会通过JS动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏界面 -->
+        <div id="game-screen" class="screen">
+            <!-- 游戏顶部信息栏 -->
+            <div class="game-header">
+                <div class="header-left">
+                    <span class="level-name" id="game-level-name">第1关</span>
+                    <span class="score-display">分数: <span id="game-score">0</span></span>
+                    <span class="combo-display">连击: <span id="game-combo">0</span>x</span>
+                </div>
+                <div class="header-right">
+                    <button class="pause-btn" onclick="togglePause()">⏸️ 暂停</button>
+                </div>
+            </div>
+
+            <!-- 时间进度条 -->
+            <div class="time-container">
+                <div class="time-label">⏱️ 剩余时间</div>
+                <div class="time-bar">
+                    <div id="time-progress" class="time-progress"></div>
+                </div>
+                <span id="time-text">60s</span>
+            </div>
+
+            <!-- 订单区域 -->
+            <div class="order-container">
+                <h3>📋 当前订单</h3>
+                <div id="order-items" class="order-items">
+                    <!-- 订单项目动态生成 -->
+                </div>
+            </div>
+
+            <!-- 火锅区域 -->
+            <div class="hotpot-area">
+                <div id="hotpot" class="hotpot">
+                    <div class="hotpot-broth"></div>
+                    <div class="hotpot-steam"></div>
+                </div>
+            </div>
+
+            <!-- 传送带区域 -->
+            <div class="conveyor-wrapper">
+                <div id="conveyor-top" class="conveyor horizontal top">
+                    <div class="conveyor-belt"></div>
+                </div>
+                <div id="conveyor-right" class="conveyor vertical right">
+                    <div class="conveyor-belt"></div>
+                </div>
+                <div id="conveyor-bottom" class="conveyor horizontal bottom">
+                    <div class="conveyor-belt"></div>
+                </div>
+                <div id="conveyor-left" class="conveyor vertical left">
+                    <div class="conveyor-belt"></div>
+                </div>
+            </div>
+
+            <!-- 食材容器 -->
+            <div id="ingredients-container" class="ingredients-container">
+                <!-- 食材动态生成 -->
+            </div>
+
+            <!-- 道具显示 -->
+            <div class="powerup-status">
+                <div id="ice-status" class="powerup-item hidden">
+                    <span>❄️ 冰冻效果</span>
+                    <span id="ice-timer">0s</span>
+                </div>
+                <div id="strainer-status" class="powerup-item hidden">
+                    <span>🥄 漏勺效果</span>
+                    <span id="strainer-timer">0s</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 暂停菜单 -->
+        <div id="pause-menu" class="modal hidden">
+            <div class="modal-content">
+                <h2>⏸️ 游戏暂停</h2>
+                <div class="modal-buttons">
+                    <button class="menu-btn primary" onclick="togglePause()">▶️ 继续游戏</button>
+                    <button class="menu-btn danger" onclick="exitGame()">🚪 退出关卡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 通关界面 -->
+        <div id="victory-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>🎉 通关成功！</h2>
+                <div class="result-stats">
+                    <p>得分: <span id="victory-score">0</span></p>
+                    <p>获得金币: <span id="victory-coins">0</span></p>
+                    <p>最高连击: <span id="victory-combo">0</span></p>
+                </div>
+                <div class="modal-buttons">
+                    <button class="menu-btn primary" onclick="nextLevel()">➡️ 下一关</button>
+                    <button class="menu-btn secondary" onclick="showScreen('level-select')">📋 选择关卡</button>
+                    <button class="menu-btn secondary" onclick="showScreen('main-menu')">🏠 返回主菜单</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 失败界面 -->
+        <div id="defeat-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>💔 挑战失败</h2>
+                <p id="defeat-reason">时间耗尽了...</p>
+                <div class="result-stats">
+                    <p>得分: <span id="defeat-score">0</span></p>
+                </div>
+                <div class="modal-buttons">
+                    <button class="menu-btn primary" onclick="retryLevel()">🔄 重新挑战</button>
+                    <button class="menu-btn secondary" onclick="showScreen('level-select')">📋 选择关卡</button>
+                    <button class="menu-btn secondary" onclick="showScreen('main-menu')">🏠 返回主菜单</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商店界面 -->
+        <div id="shop" class="screen">
+            <div class="shop-container">
+                <h2>🏪 商店装修</h2>
+                <div class="shop-header">
+                    <span class="coins-display">💰 <span id="shop-coins">0</span></span>
+                    <button class="back-btn" onclick="showScreen('main-menu')">← 返回</button>
+                </div>
+                
+                <div class="shop-tabs">
+                    <button class="tab-btn active" onclick="showShopTab('tables')">🪑 桌椅</button>
+                    <button class="tab-btn" onclick="showShopTab('wallpapers')">🖼️ 墙纸</button>
+                    <button class="tab-btn" onclick="showShopTab('hotpots')">🍲 火锅</button>
+                </div>
+                
+                <div id="shop-items" class="shop-items">
+                    <!-- 商店物品动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 图鉴界面 -->
+        <div id="collection" class="screen">
+            <div class="collection-container">
+                <h2>📚 菜品图鉴</h2>
+                <button class="back-btn" onclick="showScreen('main-menu')">← 返回</button>
+                
+                <div id="collection-items" class="collection-items">
+                    <!-- 图鉴项目动态生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="audio.js"></script>
+    <script src="api.js"></script>
+    <script src="game.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

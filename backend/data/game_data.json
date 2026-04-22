@@ -1,0 +1,95 @@
+{
+  "player": {
+    "coins": 100,
+    "completed_levels": [],
+    "total_score": 0
+  },
+  "shop": {
+    "tables": [
+      {
+        "id": 1,
+        "name": "基础木桌",
+        "price": 0,
+        "unlocked": true
+      },
+      {
+        "id": 2,
+        "name": "红木餐桌",
+        "price": 200,
+        "unlocked": false
+      },
+      {
+        "id": 3,
+        "name": "大理石桌",
+        "price": 500,
+        "unlocked": false
+      },
+      {
+        "id": 4,
+        "name": "豪华金桌",
+        "price": 1000,
+        "unlocked": false
+      }
+    ],
+    "wallpapers": [
+      {
+        "id": 1,
+        "name": "白色墙壁",
+        "price": 0,
+        "unlocked": true
+      },
+      {
+        "id": 2,
+        "name": "温馨墙纸",
+        "price": 150,
+        "unlocked": false
+      },
+      {
+        "id": 3,
+        "name": "古典壁画",
+        "price": 400,
+        "unlocked": false
+      },
+      {
+        "id": 4,
+        "name": "霓虹夜景",
+        "price": 800,
+        "unlocked": false
+      }
+    ],
+    "hotpots": [
+      {
+        "id": 1,
+        "name": "普通单锅",
+        "price": 0,
+        "unlocked": true
+      },
+      {
+        "id": 2,
+        "name": "鸳鸯锅",
+        "price": 300,
+        "unlocked": false
+      },
+      {
+        "id": 3,
+        "name": "九宫格",
+        "price": 600,
+        "unlocked": false
+      },
+      {
+        "id": 4,
+        "name": "四宫格",
+        "price": 1200,
+        "unlocked": false
+      }
+    ]
+  },
+  "collection": {
+    "dishes": []
+  },
+  "selected": {
+    "table": 1,
+    "wallpaper": 1,
+    "hotpot": 1
+  }
+}
