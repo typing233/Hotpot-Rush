@@ -339,11 +339,11 @@ body {
 /* 订单区域样式 */
 .order-container {
     position: absolute;
-    top: 120px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    left: 100px;
+    transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.95);
-    padding: 15px 30px;
+    padding: 15px 20px;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     z-index: 100;
@@ -357,7 +357,8 @@ body {
 
 .order-items {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
 }
 
